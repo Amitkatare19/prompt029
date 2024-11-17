@@ -1,0 +1,232 @@
+:root {
+    --bg-color: #0f172a;
+    --text-color: #e2e8f0;
+    --accent-color: #60a5fa;
+    --secondary-color: #f472b6;
+    --tertiary-color: #34d399;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    position: relative;
+}
+
+
+.image-section,
+.form-section {
+    flex: 1;
+    padding: 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.image-section {
+    background-image: url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8c3BhY2V8fHx8fHwxNjg0Nzg5MjEx&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.image-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 40px;
+    color: #fff;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.image-section:hover .image-overlay {
+    transform: translateY(0);
+}
+
+.image-overlay h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 3em;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+    transition-delay: 0.2s;
+}
+
+.image-section:hover .image-overlay h2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.image-overlay p {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+    transition-delay: 0.3s;
+}
+
+.image-section:hover .image-overlay p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.form-section h1 {
+    font-family: "Cormorant Garamond", serif;
+    color: var(--accent-color);
+    margin-bottom: 40px;
+    font-size: 3em;
+    position: relative;
+}
+
+.form-section h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 50px;
+    height: 2px;
+    background: var(--secondary-color);
+    transition:
+        width 0.3s ease,
+        background 0.3s ease;
+}
+
+.form-section:hover h1::after {
+    width: 100px;
+    background: var(--tertiary-color);
+}
+
+.form-group {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    color: var(--text-color);
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+}
+
+.form-group label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label {
+    top: -25px;
+    left: 0;
+    font-size: 14px;
+    color: var(--accent-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+button {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    font-size: 25px;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.social-icons i:hover {
+    color: var(--bg-color);
+    transform: translateY(-3px);
+}
+
+.social-icons i:hover::before {
+    transform: scale(1);
+}
+
